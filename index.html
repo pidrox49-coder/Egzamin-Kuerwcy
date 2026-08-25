@@ -13994,22 +13994,21 @@
             }
         }
 
-        function showResults()
-        clearInterval(timerInterval);{
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.remove('hidden');
-            document.getElementById('res-correct').textContent = score;
-            document.getElementById('res-total').textContent = currentPool.length;
-        }
+    function showResults() {
+    clearInterval(timerInterval);
+    document.getElementById('quiz-screen').classList.add('hidden');
+    document.getElementById('result-screen').classList.remove('hidden');
+    document.getElementById('res-correct').textContent = score;
+    document.getElementById('res-total').textContent = currentPool.length;
+}
 
-        function goToMenu()
-        clearInterval(timerInterval);{
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.add('hidden');
-            document.getElementById('start-screen').classList.remove('hidden');
-            document.getElementById('header-mode').textContent = "Wybierz tryb";
-        }
-
+function goToMenu() {
+    clearInterval(timerInterval);
+    document.getElementById('quiz-screen').classList.add('hidden');
+    document.getElementById('result-screen').classList.add('hidden');
+    document.getElementById('start-screen').classList.remove('hidden');
+    document.getElementById('header-mode').textContent = "Wybierz tryb";
+}
         function resetProgress() {
             if(confirm("Czy na pewno chcesz zresetować postęp w Trybie Nauki?")) {
                 localStorage.removeItem('learningProgress');
