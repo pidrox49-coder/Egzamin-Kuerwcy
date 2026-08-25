@@ -56,6 +56,9 @@
                     <i class="fa-solid fa-rotate-left mr-1"></i> Zresetuj postęp nauki
                 </button>
             </div>
+            <button onclick="showStats()" class="w-full py-3 mt-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition border border-slate-700">
+    <i class="fa-solid fa-chart-pie mr-2"></i> Statystyki i Wyniki
+</button>
         </div>
 <!-- Ekran Kategorii -->
     <div id="category-screen" class="hidden w-full bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-2xl">
@@ -14014,6 +14017,9 @@
     document.getElementById('result-screen').classList.remove('hidden');
     document.getElementById('res-correct').textContent = score;
     document.getElementById('res-total').textContent = currentPool.length;
+        if (mode === 'exam') {
+        saveExamResult(score, currentPool.length);
+    }
 }
 
 function goToMenu() {
@@ -14089,6 +14095,47 @@ function showCategories() {
         
         document.getElementById('timer-container').style.display = 'none';
         loadQuestion();
+    }
+        // Funkcja pobierająca statystyki z pamięci przeglądarki
+    function getStats() {
+        let stats = localStorage.getItem('quizStats');
+        if (!stats) {
+            return { totalExams: 0, passedExams: 0, totalCorrect: 0, totalWrong: 0, totalScoreSum: 0 };
+        }
+        return JSON.parse(stats);
+    }
+
+    // Funkcja zapisująca wynik egzaminu
+    function saveExamResult(correctCount, totalCount) {
+        let stats = getStats();
+        stats.totalExams++;
+        stats.totalCorrect += correctCount;
+        stats.totalWrong += (totalCount - correctCount);
+        
+        let percent = (correctCount / totalCount) * 100;
+        stats.totalScoreSum += percent;
+        
+        if (percent >= 80) {
+            stats.passedExams++;
+        }
+        
+        localStorage.setItem('quizStats', JSON.stringify(stats));
+    }
+
+    // Otwieranie ekranu statystyk i liczenie średnich
+    function showStats() {
+        document.getElementById('start-screen').classList.add('hidden');
+        document.getElementById('stats-screen').classList.remove('hidden');
+        document.getElementById('header-mode').textContent = "Statystyki";
+
+        let stats = getStats();
+        document.getElementById('stat-exams-total').textContent = stats.totalExams;
+        document.getElementById('stat-exams-passed').textContent = stats.passedExams;
+        document.getElementById('stat-correct').textContent = stats.totalCorrect;
+        document.getElementById('stat-wrong').textContent = stats.totalWrong;
+
+        let avg = stats.totalExams > 0 ? (stats.totalScoreSum / stats.totalExams).toFixed(1) : 0;
+        document.getElementById('stat-avg-percent').textContent = avg + "%";
     }
 const KLUCZ_ODPOWIEDZI = "cbbbaabbbcacbcaaabcabcccacacbcacbcaabacccbbcabaccccaccbbbcabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacb";
 WBUDOWANA_BAZA.forEach((pytanie, index) => {
