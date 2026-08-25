@@ -199,7 +199,7 @@
                 "text": "Wywrócenie się pojazdu."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -219,7 +219,7 @@
                 "text": "Na obszarze zabudowanym, z wyjątkiem miast, których liczba mieszkańców przekracza 1 milion."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -259,7 +259,7 @@
                 "text": "40 – 59 lat."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -279,7 +279,7 @@
                 "text": "18 – 30 lat."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -9079,7 +9079,7 @@
                 "text": "Po upływie godziny od zakończenia picia."
             }
         ],
-        "correct": "a",
+        "correct": "c",
         "explanation": ""
     },
     {
@@ -9399,7 +9399,7 @@
                 "text": "Należy to do wyłącznej decyzji kierowcy."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -9779,7 +9779,7 @@
                 "text": "Apteczka."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -12259,7 +12259,7 @@
                 "text": "Mieć ukończone technikum samochodowe."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -12399,7 +12399,7 @@
                 "text": "W każdym 24 godzinnym okresie po upływie poprzedniego dziennego okresu odpoczynku lub tygodniowego okresu odpoczynku."
             }
         ],
-        "correct": "a",
+        "correct": "c",
         "explanation": ""
     },
     {
@@ -12459,7 +12459,7 @@
                 "text": "Co najmniej 11 godzin."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -12499,7 +12499,7 @@
                 "text": "48 godzin."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -12559,7 +12559,7 @@
                 "text": "Maksymalnie na 10 lat jeśli kierowca nie ukończył 65 roku życia."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -12759,7 +12759,7 @@
                 "text": "Nie, bo kierowca tylko nadzoruje załadunek. 2.1. Uwarunkowania społeczne dotyczące transportu drogowego"
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -13099,7 +13099,7 @@
                 "text": "Tak, ale tylko w przypadku wykonywania przewozów międzynarodowych."
             }
         ],
-        "correct": "a",
+        "correct": "b",
         "explanation": ""
     },
     {
@@ -13719,7 +13719,7 @@
                 "text": "Przedsiębiorca, na rzecz którego wykonywane są przewozy."
             }
         ],
-        "correct": "a",
+        "correct": "c",
         "explanation": ""
     },
     {
@@ -14176,10 +14176,11 @@ function showCategories() {
         document.getElementById('start-screen').classList.remove('hidden');
         document.getElementById('header-mode').textContent = "Wybierz tryb";
     }
-const KLUCZ_ODPOWIEDZI = "cbbabbbabcaabcaaabcabcccacacbcacbcaabacaccbcababcccaccbcabbbababcbabcbbabcabbcaabbcbaabbbacbabbabbbabbacbcccabbabcbcabbbcbacaacbaaabcbcccbbbabcacbacaabaaccbbbacccacbcacbcaaaccaabaabbabbabaaaaabaabbabacaaacacaacababcbcacbbbabaaccbabacbabcabbbabbacaababccaaaabbaccbababccbabaacccaabbbccbcaaabcabaaabaaacbabcabaaacacabaaabcacaabbbbbbcbbbcbbaaaaabbbaacbacccacbbbaabbcaabaccbbbcbccabcacbaabacbcbacbbabbcacababcabccabcaabaaaaaababccbbcbbbcaabbbcbaacbbacbabacaccbabaababacbccaabaabcbcacccbbacbbabccbaaabbccaabaaabaacbabccbabaabcbabccbaccabaaaaaacbbbbbcbbbcabbacbacbacabcabccabcaabccccbabccacbbbabaccabacabacbbaacbbbaaabcbababacbbcaababbcbcacbbbcababbbbbabbbaccbaabbaccacbcccbaccabaababccbbbaacbcb";
-WBUDOWANA_BAZA.forEach((pytanie, index) => {
-    if(KLUCZ_ODPOWIEDZI[index]) {
-        pytanie.correct = KLUCZ_ODPOWIEDZI[index];
+const KLUCZ_ODPOWIEDZI = "cbbabbbabcaabcaaabcabcccacacbcacbcaabacaccbcababcccaccbcabbbababcbabcbbabcabbcaabbcbaabbbacbabbabbbabbacbcccabbabcbcabbbcbacaacbaaabcbcccbbbabcacbacaabaaccbbbacccacbcacbcaaaccaabaabbabbabaaaaabaabbabacaaacacaacababcbcacbbbabaaccbabacbabcabbbabbacaababccaaaabbaccbababccbabaacccaabbbccbcaaabcabaaabaaacbabcabaaacacabaaabcacaabbbbbbcbbbcbbaaaaabbbaacbacccacbbbaabbcaabaccbbbcbccabcacbaabacbcbacbbabbcacababcabccabcaabaaaaaababccbbcbbbcaabbbcbaacbbacbabacaccbabaababacbccaabaabcbcacccbbacbbabccbaaabbccaabaaabaacbabccbabaabcbabccbaccabaaaaaacbbbbbcbbbcabbacbacbacabcabccabcaabccccbabccacbbbabaccabacabacbbaacbbbaaabcbababacbbcaababbcbcacbbbcababbbbbabbbaccbaabbaccacbcccbaccabaababccbbbaacbcb";WBUDOWANA_BAZA.forEach((pytanie, index) => {
+   WBUDOWANA_BAZA.forEach((pytanie, index) => {
+    let literka = KLUCZ_ODPOWIEDZI[index];
+    if (literka) {
+        pytanie.correct = literka.toLowerCase().trim();
     }
 });
     </script>
