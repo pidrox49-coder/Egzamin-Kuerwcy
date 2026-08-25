@@ -86,7 +86,7 @@
         </div>
 
 <div class="mt-6">
-            <button onclick="document.getElementById('stats-screen').classList.add('hidden'); document.getElementById('start-screen').classList.remove('hidden'); document.getElementById('header-mode').textContent = 'Wybierz tryb';" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition border border-slate-700">
+     <button onclick="closeStats()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition border border-slate-700">
                 <i class="fa-solid fa-arrow-left mr-2"></i> Powrót do menu
             </button>
         </div>
@@ -14154,7 +14154,7 @@ function showCategories() {
         localStorage.setItem('quizStats', JSON.stringify(stats));
     }
 
-    // Otwieranie ekranu statystyk i liczenie średnich
+   // Otwieranie ekranu statystyk i liczenie średnich
     function showStats() {
         document.getElementById('start-screen').classList.add('hidden');
         document.getElementById('stats-screen').classList.remove('hidden');
@@ -14168,6 +14168,13 @@ function showCategories() {
 
         let avg = stats.totalExams > 0 ? (stats.totalScoreSum / stats.totalExams).toFixed(1) : 0;
         document.getElementById('stat-avg-percent').textContent = avg + "%";
+    }
+
+    // Funkcja zamykająca statystyki i wracająca do menu
+    function closeStats() {
+        document.getElementById('stats-screen').classList.add('hidden');
+        document.getElementById('start-screen').classList.remove('hidden');
+        document.getElementById('header-mode').textContent = "Wybierz tryb";
     }
 const KLUCZ_ODPOWIEDZI = "cbbbaabbbcacbcaaabcabcccacacbcacbcaabacccbbcabaccccaccbbbcabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacb";
 WBUDOWANA_BAZA.forEach((pytanie, index) => {
