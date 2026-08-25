@@ -45,7 +45,7 @@
                     Egzamin (30 losowych pytań)
                 </button>
                 
-                <button onclick="startMode('learning')" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2">
+                <button onclick="showCategories()" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-book-open text-lg"></i>
                     Tryb Nauki (krok po kroku)
                 </button>
@@ -55,7 +55,19 @@
                 </button>
             </div>
         </div>
+<!-- Ekran Kategorii -->
+    <div id="category-screen" class="hidden w-full bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-2xl">
+        <h2 class="text-2xl font-bold mb-4 text-slate-100">Wybierz dział do nauki</h2>
+        <p class="text-sm text-slate-400 mb-6">Pytania zostały podzielone na wygodne pakiety, aby ułatwić Ci naukę.</p>
+        
+        <div id="category-container" class="space-y-3 max-h-96 overflow-y-auto pr-2">
+            <!-- Przyciski wygenerują się tutaj same -->
+        </div>
 
+        <button onclick="document.getElementById('category-screen').classList.add('hidden'); document.getElementById('start-screen').classList.remove('hidden'); document.getElementById('header-mode').textContent = 'Wybierz tryb';" class="mt-6 w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition border border-slate-700">
+            <i class="fa-solid fa-arrow-left mr-2"></i> Powrót do menu
+        </button>
+    </div>
         <!-- Ekran quizu -->
         <div id="quiz-screen" class="hidden w-full bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-2xl">
             <div id="timer-container" style="display: none; text-align: center; font-size: 24px; font-weight: bold; color: #ff4757; margin-bottom: 15px;">
@@ -14042,6 +14054,8 @@ function updateTimerDisplay() {
     if(seconds < 10) seconds = "0" + seconds;
     document.getElementById('time-left').textContent = minutes + ":" + seconds;
 }
+        showCategories
+        startLearningMode
 const KLUCZ_ODPOWIEDZI = "cbbbaabbbcacbcaaabcabcccacacbcacbcaabacccbbcabaccccaccbbbcabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacb";
 WBUDOWANA_BAZA.forEach((pytanie, index) => {
     if(KLUCZ_ODPOWIEDZI[index]) {
