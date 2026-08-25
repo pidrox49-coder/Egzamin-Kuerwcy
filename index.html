@@ -14054,8 +14054,40 @@ function updateTimerDisplay() {
     if(seconds < 10) seconds = "0" + seconds;
     document.getElementById('time-left').textContent = minutes + ":" + seconds;
 }
-        showCategories
-        startLearningMode
+function showCategories() {
+        document.getElementById('start-screen').classList.add('hidden');
+        document.getElementById('category-screen').classList.remove('hidden');
+        document.getElementById('header-mode').textContent = "Działy do nauki";
+        
+        const container = document.getElementById('category-container');
+        container.innerHTML = ''; 
+        
+        const chunkSize = 100; // Paczki po 100 pytań
+        
+        for(let i = 0; i < WBUDOWANA_BAZA.length; i += chunkSize) {
+            let end = Math.min(i + chunkSize, WBUDOWANA_BAZA.length);
+            let btn = document.createElement('button');
+            btn.className = "w-full py-4 bg-slate-800 hover:bg-emerald-600 text-slate-200 font-semibold rounded-xl transition border border-slate-700 text-left px-5 flex items-center justify-between";
+            btn.innerHTML = `<span><i class="fa-solid fa-layer-group mr-3 text-emerald-500"></i> Pytania: ${i + 1} - ${end}</span><i class="fa-solid fa-chevron-right text-slate-500"></i>`;
+            btn.onclick = () => startLearningMode(i, end);
+            container.appendChild(btn);
+        }
+    }
+
+    function startLearningMode(start, end) {
+        mode = 'learning';
+        document.getElementById('category-screen').classList.add('hidden');
+        document.getElementById('quiz-screen').classList.remove('hidden');
+        document.getElementById('header-mode').textContent = `Tryb Nauki (${start + 1}-${end})`;
+        
+        currentPool = WBUDOWANA_BAZA.slice(start, end);
+        currentIndex = 0;
+        score = 0;
+        answered = false;
+        
+        document.getElementById('timer-container').style.display = 'none';
+        loadQuestion();
+    }
 const KLUCZ_ODPOWIEDZI = "cbbbaabbbcacbcaaabcabcccacacbcacbcaabacccbbcabaccccaccbbbcabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacb";
 WBUDOWANA_BAZA.forEach((pytanie, index) => {
     if(KLUCZ_ODPOWIEDZI[index]) {
