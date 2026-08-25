@@ -14177,12 +14177,12 @@ function showCategories() {
         document.getElementById('header-mode').textContent = "Wybierz tryb";
     }
 const KLUCZ_ODPOWIEDZI = "cbbabbbabcaabcaaabcabcccacacbcacbcaabacaccbcababcccaccbcabbbababcbabcbbabcabbcaabbcbaabbbacbabbabbbabbacbcccabbabcbcabbbcbacaacbaaabcbcccbbbabcacbacaabaaccbbbacccacbcacbcaaaccaabaabbabbabaaaaabaabbabacaaacacaacababcbcacbbbabaaccbabacbabcabbbabbacaababccaaaabbaccbababccbabaacccaabbbccbcaaabcabaaabaaacbabcabaaacacabaaabcacaabbbbbbcbbbcbbaaaaabbbaacbacccacbbbaabbcaabaccbbbcbccabcacbaabacbcbacbbabbcacababcabccabcaabaaaaaababccbbcbbbcaabbbcbaacbbacbabacaccbabaababacbccaabaabcbcacccbbacbbabccbaaabbccaabaaabaacbabccbabaabcbabccbaccabaaaaaacbbbbbcbbbcabbacbacbacabcabccabcaabccccbabccacbbbabaccabacabacbbaacbbbaaabcbababacbbcaababbcbcacbbbcababbbbbabbbaccbaabbaccacbcccbaccabaababccbbbaacbcb";WBUDOWANA_BAZA.forEach((pytanie, index) => {
-   WBUDOWANA_BAZA.forEach((pytanie, index) => {
+WBUDOWANA_BAZA.forEach((pytanie, index) => {
     let literka = KLUCZ_ODPOWIEDZI[index];
     if (literka) {
         pytanie.correct = literka.toLowerCase().trim();
     }
 });
-    </script>
+</script>
 </body>
 </html>
