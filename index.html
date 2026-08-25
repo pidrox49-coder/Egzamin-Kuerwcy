@@ -58,6 +58,9 @@
 
         <!-- Ekran quizu -->
         <div id="quiz-screen" class="hidden w-full bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-2xl">
+            <div id="timer-container" style="display: none; text-align: center; font-size: 24px; font-weight: bold; color: #ff4757; margin-bottom: 15px;">
+    ⏱️ Pozostały czas: <span id="time-left">45:00</span>
+</div>
             <div class="mb-6">
                 <div class="flex justify-between items-center text-xs font-semibold text-slate-400 mb-2">
                     <span id="question-tracker">Pytanie 1 z 0</span>
@@ -13881,14 +13884,20 @@
 
         document.getElementById('db-count').textContent = WBUDOWANA_BAZA.length;
 
-        function startMode(selectedMode) {
-            if (WBUDOWANA_BAZA.length === 0) {
-                alert("Baza pytań jest pusta."); return;
-            }
-            
-            mode = selectedMode;
-            score = 0;
-            answered = false;
+      function startMode(selectedMode) {
+    if (WBUDOWANA_BAZA.length === 0) {
+        alert("Baza pytań jest pusta."); return;
+    }
+
+    mode = selectedMode;
+    score = 0;
+    answered = false;
+
+    if (mode === 'exam') {
+        startTimer();
+    } else {
+        document.getElementById('timer-container').style.display = 'none';
+    }
 
             if (mode === 'exam') {
                 document.getElementById('header-mode').textContent = "Tryb: Egzamin";
@@ -13985,14 +13994,16 @@
             }
         }
 
-        function showResults() {
+        function showResults()
+        clearInterval(timerInterval);{
             document.getElementById('quiz-screen').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
             document.getElementById('res-correct').textContent = score;
             document.getElementById('res-total').textContent = currentPool.length;
         }
 
-        function goToMenu() {
+        function goToMenu()
+        clearInterval(timerInterval);{
             document.getElementById('quiz-screen').classList.add('hidden');
             document.getElementById('result-screen').classList.add('hidden');
             document.getElementById('start-screen').classList.remove('hidden');
@@ -14005,6 +14016,33 @@
                 alert("Postęp został zresetowany. Zaczniesz od pytania nr 1.");
             }
         }
+        let timerInterval;
+let timeLeft = 45 * 60; 
+
+function startTimer() {
+    timeLeft = 45 * 60; 
+    document.getElementById('timer-container').style.display = 'block'; 
+    updateTimerDisplay();
+    
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Czas minął! Egzamin został zakończony automatycznie.");
+            showResults(); 
+        }
+    }, 1000); 
+}
+
+function updateTimerDisplay() {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    if(minutes < 10) minutes = "0" + minutes;
+    if(seconds < 10) seconds = "0" + seconds;
+    document.getElementById('time-left').textContent = minutes + ":" + seconds;
+}
 const KLUCZ_ODPOWIEDZI = "cbbbaabbbcacbcaaabcabcccacacbcacbcaabacccbbcabaccccaccbbbcabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacbcabccabacb";
 WBUDOWANA_BAZA.forEach((pytanie, index) => {
     if(KLUCZ_ODPOWIEDZI[index]) {
