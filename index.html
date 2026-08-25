@@ -56,9 +56,39 @@
                     <i class="fa-solid fa-rotate-left mr-1"></i> Zresetuj postęp nauki
                 </button>
             </div>
-            <button onclick="showStats()" class="w-full py-3 mt-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition border border-slate-700">
-    <i class="fa-solid fa-chart-pie mr-2"></i> Statystyki i Wyniki
-</button>
+        <!-- Przycisk statystyk w menu -->
+    <button onclick="showStats()" class="w-full py-3 mt-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition border border-slate-700">
+        <i class="fa-solid fa-chart-pie mr-2"></i> Statystyki i Wyniki
+    </button>
+
+    <!-- Ekran Statystyk -->
+    <div id="stats-screen" class="hidden w-full bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-2xl">
+        <h2 class="text-2xl font-bold mb-4 text-slate-100"><i class="fa-solid fa-chart-pie mr-2 text-indigo-400"></i> Twoje Statystyki</h2>
+        <p class="text-sm text-slate-400 mb-6">Podsumowanie Twojej dotychczasowej pracy z egzaminami.</p>
+        
+        <div class="space-y-4 mb-6">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                <span class="text-slate-300">Ukończone egzaminy:</span>
+                <span id="stat-exams-total" class="text-xl font-bold text-indigo-400">0</span>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                <span class="text-slate-300">Zdane egzaminy (pomyślne):</span>
+                <span id="stat-exams-passed" class="text-xl font-bold text-emerald-400">0</span>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                <span class="text-slate-300">Średni wynik procentowy:</span>
+                <span id="stat-avg-percent" class="text-xl font-bold text-amber-400">0%</span>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                <span class="text-slate-300">Łącznie odpowiedzi (poprawne / złe):</span>
+                <span class="text-lg font-bold"><span id="stat-correct" class="text-emerald-400">0</span> / <span id="stat-wrong" class="text-rose-400">0</span></span>
+            </div>
+        </div>
+
+        <button onclick="document.getElementById('stats-screen').classList.add('hidden'); document.getElementById('start-screen').classList.remove('hidden'); document.getElementById('header-mode').textContent = 'Wybierz tryb';" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition border border-slate-700">
+            <i class="fa-solid fa-arrow-left mr-2"></i> Powrót do menu
+        </button>
+    </div>
         </div>
 <!-- Ekran Kategorii -->
     <div id="category-screen" class="hidden w-full bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-2xl">
